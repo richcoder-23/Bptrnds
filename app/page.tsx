@@ -4,7 +4,7 @@ export default function Home() {
       <h1 className="text-[22vw] leading-none font-black tracking-tight text-black">
         Bptrnds
       </h1>
-      <p className="text-2xl md:text-4xl font-bold text-[#F4F9F0] mt-6 text-center">
+      <p className="text-xl md:text-4xl font-bold text-[#F4F9F0] mt-6 text-center">
         every heartbeat, tracked.
       </p>
     </main>
