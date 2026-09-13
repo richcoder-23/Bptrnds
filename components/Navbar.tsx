@@ -2,12 +2,14 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import type { User } from "@supabase/supabase-js";
 
 export default function Navbar() {
   const [user, setUser] = useState<User | null>(null);
   const supabase = createClient();
+  const router = useRouter();
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => {
@@ -27,7 +29,7 @@ export default function Navbar() {
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
-    setUser(null);
+    window.location.href = "/";
   };
 
   return (
@@ -51,7 +53,7 @@ export default function Navbar() {
             </Link>
             <button
               onClick={handleLogout}
-              className="px-4 py-2 rounded-full text-sm font-semibold bg-black text-white"
+              className="px-4 py-2 rounded-full text-sm font-semibold bg-black text-white hover:bg-[#66E85D]"
             >
               Log out
             </button>
