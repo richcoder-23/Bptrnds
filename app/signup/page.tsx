@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
+import Link from "next/link";
 
 export default function SignupPage() {
   const [email, setEmail] = useState("");
@@ -29,6 +30,9 @@ export default function SignupPage() {
     const { error } = await supabase.auth.signUp({
       email,
       password,
+       options: {
+    emailRedirectTo: `${window.location.origin}/auth/callback`,
+       },
     });
 
     setLoading(false);
@@ -42,7 +46,7 @@ export default function SignupPage() {
   };
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-[#CFFFCC] px-4">
+    <main className="min-h-screen flex items-center justify-center bg-[#66E85D] px-4">
       <form
         onSubmit={handleSubmit}
         className="bg-white rounded-2xl p-8 w-full max-w-sm shadow-md"
@@ -69,7 +73,7 @@ export default function SignupPage() {
           onChange={(e) => setPassword(e.target.value)}
           required
           minLength={6}
-          className="w-full border border-gray-300 rounded-lg px-3 py-2 mb-4"
+          className="w-full border border-gray-300 rounded-lg px-3 py-2 mb-4 text-black"
         />
 
         <label className="block text-sm font-semibold mb-1 text-black">
@@ -81,7 +85,7 @@ export default function SignupPage() {
           onChange={(e) => setConfirmPassword(e.target.value)}
           required
           minLength={6}
-          className="w-full border border-gray-300 rounded-lg px-3 py-2 mb-4"
+          className="w-full border border-gray-300 rounded-lg px-3 py-2 mb-4 text-black"
         />
 
         <label className="flex items-start gap-2 mb-4 text-sm text-gray-700">
@@ -107,6 +111,12 @@ export default function SignupPage() {
         >
           {loading ? "Signing up..." : "Sign up"}
         </button>
+        <p className="text-sm text-gray-600 text-center mt-4">
+          Already have an account?{" "}
+          <Link href="/login" className="font-semibold text-black underline">
+            Log in
+          </Link>
+        </p>
       </form>
     </main>
   );
