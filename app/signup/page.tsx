@@ -6,6 +6,7 @@ import { createClient } from "@/lib/supabase/client";
 import Link from "next/link";
 
 export default function SignupPage() {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -30,9 +31,9 @@ export default function SignupPage() {
     const { error } = await supabase.auth.signUp({
       email,
       password,
-       options: {
-    emailRedirectTo: `${window.location.origin}/auth/callback`,
-       },
+      options: {
+        emailRedirectTo: `${window.location.origin}/auth/callback`,
+      },
     });
 
     setLoading(false);
@@ -52,6 +53,17 @@ export default function SignupPage() {
         className="bg-white rounded-2xl p-8 w-full max-w-sm shadow-md"
       >
         <h1 className="text-2xl font-bold mb-6 text-black">Sign up</h1>
+
+        <label className="block text-sm font-semibold mb-1 text-black">
+          Name
+        </label>
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+          className="w-full border border-gray-300 rounded-lg px-3 py-2 mb-4 text-black"
+        />
 
         <label className="block text-sm font-semibold mb-1 text-black">
           Email

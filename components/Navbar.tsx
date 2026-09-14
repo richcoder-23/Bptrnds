@@ -34,26 +34,26 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-6 py-4">
-      <Link href="/" className="text-xl font-black text-black">
+      <Link href="/">
         <img
           src="https://rhxznjscewfdfthibfvw.supabase.co/storage/v1/object/public/Assets/Bplogo.svg"
           alt="Bptrnds logo"
-          className="h-9 w-auto"
+          className="h-9 w-auto md:h-8"
         />
       </Link>
 
-      <nav className="flex items-center gap-2 bg-white/80 backdrop-blur-md rounded-full px-2 py-2 shadow-sm">
+      <nav className="flex items-center gap-1 md:gap-2 bg-white/80 backdrop-blur-md rounded-full  px-1.5 py-1.5 md:px-2 md:py-2 shadow-sm">
         {user ? (
           <>
             <Link
               href="/dashboard"
-              className="px-4 py-2 rounded-full text-sm font-semibold text-black hover:bg-black/5"
+              className="px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-semibold text-black hover:bg-black/5"
             >
               Dashboard
             </Link>
             <button
               onClick={handleLogout}
-              className="px-4 py-2 rounded-full text-sm font-semibold bg-black text-white hover:bg-[#66E85D]"
+              className="px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-semibold bg-black text-white hover:bg-[#66E85D]"
             >
               Log out
             </button>
@@ -62,13 +62,13 @@ export default function Navbar() {
           <>
             <Link
               href="/login"
-              className="px-4 py-2 rounded-full text-sm font-semibold text-black hover:bg-black/5"
+              className="px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-semibold text-black hover:bg-black/5"
             >
               Log in
             </Link>
             <Link
               href="/signup"
-              className="px-4 py-2 rounded-full text-sm font-semibold bg-black text-white"
+              className="px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-semibold bg-black text-white"
             >
               Sign up
             </Link>
